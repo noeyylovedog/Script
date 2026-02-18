@@ -1,71 +1,33 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <title>Hotel Booking</title>
-    <script>
-        function calculatePrice() {
-            
-            let nights = document.getElementById("nights").value;
-            let rooms = document.getElementById("rooms").value;
-            let children = document.getElementById("children").value;
-
-            // แปลงค่าให้เป็นตัวเลข 
-            nights = Number(nights);
-            rooms = Number(rooms);
-            children = Number(children);
-
-            // คำนวณราคาห้องพักต่อคืน 
-            let pricePerRoom = 1500 + (children * 300);
-            
-            // คำนวณราคาห้องพักทั้งหมด 
-            let totalPrice = pricePerRoom * rooms * nights;
-
-            // result
-            document.getElementById("showPricePerRoom").innerText = pricePerRoom;
-            document.getElementById("showTotalPrice").innerText = totalPrice;
-        }
-    </script>
-</head>
-<body>
-
-    <form action="#" method="POST">
+<html>
+    <head>
+        <meta charset="UTF-8"><title>Reseave a Hotel</title>
         
-        <p>
-            Reserve a Hotel: <br>
-            <input type="text" list="hotelList" name="hotel" required>
-            <datalist id="hotelList">
+    </head>
+    <body>
+        <h1>Reseave a Hotel</h1>
+        <form oninput="price.value = 1500 + (children.valueAsNumber * 300 );
+        total.value = price.value * nights.valueAsNumber * rooms.valueAsNumber;">
+             <input list="Hotels" name="Hotel" required> 
+            <datalist id="Hotels">
                 <option value="โคราชคันทรีคลับ"></option>
                 <option value="โคราชรีสอร์ท"></option>
                 <option value="สุรสัมมนาคาร"></option>
-                <option value="สุรนารีวิลล์"></option>
+                <option value="สุรนารีวิลล"></option>
                 <option value="สีมาธานี"></option>
-            </datalist>
-        </p>
+            </datalist><BR></BR>
+            Check-in <input type="date" name="Check-in"> Night <input type="number" name="nights" min="1" max="30" value="1"required><BR></BR>
+            room <input type="number" name="rooms" min="1" max="9" value="1" required> 
+            Adults per room <input type="number" name="adult" min="1" max="2" value="1" required>
+            Children per room <input type="number" name="children" min="0" max="2" value="1" required><br><br>
 
-        <p>
-            Check-in: <input type="date" name="checkin" required>
-            Nights: <input type="number" id="nights" name="nights" min="1" max="30" value="1" oninput="calculatePrice()" required>
-        </p>
+            Price per room:<output name="price"></output> <br><br>
 
-        <p>
-            Rooms: <input type="number" id="rooms" name="rooms" min="1" max="9" value="1" oninput="calculatePrice()" required>
-            Adults per room: <input type="number" name="adults" min="1" max="2" value="1" required>
-            Children per room: <input type="number" id="children" name="children" min="0" max="2" value="0" oninput="calculatePrice()" required>
-        </p>
+            Total price:<output name="total"></output> <br><br>
 
-        <p>
-            Price per room: <span id="showPricePerRoom">1500</span>
-        </p>
-        <p>
-            Total Price: <span id="showTotalPrice">1500</span>
-        </p>
+            <input type="submit" value="Reseave">
+        </form>
 
-        <p>
-            <input type="submit" value="Reserve">
-        </p>
-
-    </form>
-
-</body>
+    
+       
+    </body>
 </html>
